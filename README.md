@@ -10,6 +10,8 @@ I'd like to start the exploration with [Dune Analytics](https://duneanalytics.co
 
 I'd also like to explore [The Graph Protocol](https://thegraph.com/), specifically what the Curator and Indexer roles entail.
 
+_Note_: Also join discord for these projects.
+
 Other Projects to explore:
 
 - Etherscan
