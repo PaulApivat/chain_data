@@ -35,8 +35,9 @@ _Note_: Also join discord for these projects.
 ### Phase 1 Outcomes
 
 1. A SQL primer to explore Ethereum on Dune Analytics. [Tool]
-2. Top 10 Projects in DeFi, by the numbers in both SQL and GraphQL. [Dashboard]
+2. Top 10 Projects in DeFi, by the numbers in both SQL and GraphQL. Build a [Dashboard]
 3. Top 10 Metrics investors use to evaluate DeFi projects [Metrics] [Queries]
+4. Join community
 
 ### Phase 2 The Graph Protocol
 
@@ -48,6 +49,7 @@ Then explore The Graph Documentation:
 - Deploy a Subgraph
 - Query The Graph
 - GraphQL API
+- join community
 
 ### Phase 2 Outcomes
 
