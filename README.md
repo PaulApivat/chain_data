@@ -36,8 +36,10 @@ _Note_: Also join discord for these projects.
 
 1. A SQL primer to explore Ethereum on Dune Analytics. [Tool]
 2. Top 10 Projects in DeFi, by the numbers in both SQL and GraphQL. Build a [Dashboard]
+   2a. See if possible to do a [rabbithole quest](https://rabbithole.gg/quests) on any coins.
 3. Top 10 Metrics investors use to evaluate DeFi projects [Metrics] [Queries]
 4. Join community
+5. Reflections on phase 1 (falling down the rabbit hole yet?)
 
 ### Phase 2 The Graph Protocol
 
@@ -56,6 +58,8 @@ Then explore The Graph Documentation:
 1. Write a primer on The Graph [Documentation](https://thegraph.com/docs/introduction)
 2. A GraphQL primer to create sub-graphs. [Tool]
 3. Top 10 Projects in DeFi, by the numbers in both SQL and GraphQL. [Dashboard]
+4. Join community
+5. Reflections on phase 2 (falling down the rabbit hole yet?)
 
 ### Beyond
 
