@@ -13,7 +13,7 @@ We'll start with [Dune Analytics](https://duneanalytics.com/home); a perfect opp
 - write explainer for 5 useful dashboards to know
 - [DEX metrics](https://duneanalytics.com/hagaetc/dex-metrics)
 - [BTC on Ethereum](https://duneanalytics.com/eliasimos/btc-on-ethereum_1)
-- [Introductory Ethereum Metrics](https://duneanalytics.com/kroeger0x/ethereum-metrics_1)
+- [Introductory Ethereum Metrics](https://duneanalytics.com/kroeger0x/ethereum-metrics_1), see Charts from the Ethereum Network ([link](https://etherchain.org/charts))
 - [Uniswap Fundamentals](https://duneanalytics.com/carrawu/uniswap-analytics)
 - [Uniswap Governance](https://duneanalytics.com/lsquared/uniswap-governance)
 - [Tornado Cash, Privacy on Ethereum](https://duneanalytics.com/poma/tornado-cash_1)
