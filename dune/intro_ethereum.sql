@@ -60,3 +60,23 @@ FROM ethereum."blocks"
 WHERE time > now() - interval '10 days'
 GROUP BY dt
 LIMIT 10
+
+/* Line Chart */
+/* Number of Distinct Miners PER DAY since beginnning */
+/* omit first row */
+SELECT 
+COUNT(DISTINCT(miner)) AS num_miner, 
+DATE_TRUNC('day', time) AS dt
+FROM ethereum."blocks"
+GROUP BY dt
+OFFSET 1
+
+/* Area Chart */
+/* Daily Gas Fees (gwei) on Ethereum */
+SELECT 
+SUM(gas_used) AS gas_sum,
+DATE_TRUNC('day', time) AS dt
+FROM ethereum."blocks"
+GROUP BY dt
+OFFSET 1
+
