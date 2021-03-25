@@ -71,6 +71,8 @@ FROM ethereum."blocks"
 GROUP BY dt
 OFFSET 1
 
+/* GAS */
+
 /* Area Chart */
 /* Daily Gas Fees (gwei) on Ethereum */
 SELECT 
