@@ -71,6 +71,9 @@ Then explore The Graph Documentation:
 
 ## Code, Libraries and Resources Used
 
+- [Dune Snippets](https://github.com/sambacha/dune-snippets)
+- [Dune Discord](https://discord.com/invite/ErrzwBz)
+
 ## Documenting Progress
 
 ## Getting Data
