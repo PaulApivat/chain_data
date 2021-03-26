@@ -82,3 +82,20 @@ FROM ethereum."blocks"
 GROUP BY dt
 OFFSET 1
 
+/* TRANSACTIONS */
+
+/* Total transactions in the last 10 days */
+SELECT 
+DATE_TRUNC('day',block_time) AS dt
+    , COUNT(*) AS num_tx
+FROM ethereum."transactions"
+WHERE block_time >= (DATE_TRUNC('day',CURRENT_TIMESTAMP) - '10 days'::INTERVAL)
+GROUP BY dt
+
+/* Total Daily Transactions on Ethereum */
+SELECT 
+DATE_TRUNC('day',block_time) AS dt
+    , COUNT(*) AS num_tx
+FROM ethereum."transactions"
+GROUP BY dt
+OFFSET 1
