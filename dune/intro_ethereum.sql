@@ -84,8 +84,16 @@ FROM ethereum."transactions"
 GROUP BY dt
 OFFSET 1
 
+/* USE INNER JOIN & LEFT JOIN */
+/* Need to join with ethereum."traces", and ethereum."blocks" to use time */
+SELECT 
+value,
+time
+FROM ethereum."traces"
+INNER JOIN ethereum."blocks" ON block_hash=hash
+LIMIT 5
+
 /* TOTAL ACCOUNTS */
-/* Need to join with "blocks" to use time */
 
 SELECT 
 COUNT(address) AS num_addresses
@@ -101,6 +109,7 @@ LIMIT 10
 /* UNIQUE ADDRESSES Per DAY */
 /* Visualize Total Accounts ? */
 
+/* TIMED OUT */
 SELECT 
 COUNT(DISTINCT(address)),
 DATE_TRUNC('day', time) AS dt
