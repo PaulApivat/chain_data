@@ -22,7 +22,7 @@ GROUP BY 1
 OFFSET 1
 
 
-/* VISUALIZE AVERAGE Difficulty */
+/* VISUALIZE AVERAGE DIFFICULTY */
 
 SELECT 
 DATE_TRUNC('day', time) AS dt,
@@ -42,19 +42,9 @@ GROUP BY 1
 OFFSET 1
 
 
-/* Line Chart */
-/* Number of Distinct Miners PER DAY since beginnning */
-/* omit first row */
-SELECT 
-COUNT(DISTINCT(miner)) AS num_miner, 
-DATE_TRUNC('day', time) AS dt
-FROM ethereum."blocks"
-GROUP BY dt
-OFFSET 1
-
 /* GAS */
 
-/* Area Chart */
+/* VISUALIZE TOTAL GAS USAGE */
 /* Daily Gas Fees (gwei) on Ethereum */
 SELECT 
 SUM(gas_used) AS gas_sum,
@@ -62,6 +52,19 @@ DATE_TRUNC('day', time) AS dt
 FROM ethereum."blocks"
 GROUP BY dt
 OFFSET 1
+
+/* VISUALIZE Block Gas Limit */
+
+SELECT 
+SUM(gas_limit) AS sum_gas_limit,
+DATE_TRUNC('day', time) AS dt
+FROM ethereum."blocks"
+GROUP BY dt
+OFFSET 1
+
+
+
+
 
 /* TRANSACTIONS */
 
@@ -80,3 +83,18 @@ DATE_TRUNC('day',block_time) AS dt
 FROM ethereum."transactions"
 GROUP BY dt
 OFFSET 1
+
+/* TOTAL ACCOUNTS */
+/* Need to join with "blocks" to use time */
+
+SELECT 
+COUNT(address) AS num_addresses
+FROM ethereum."traces"
+LIMIT 10
+
+/* inner join "blocks" and "traces" */
+SELECT address, block_hash, time
+FROM ethereum."traces"
+INNER JOIN ethereum."blocks" ON block_hash=hash
+LIMIT 10
+
