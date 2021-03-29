@@ -98,3 +98,13 @@ FROM ethereum."traces"
 INNER JOIN ethereum."blocks" ON block_hash=hash
 LIMIT 10
 
+/* UNIQUE ADDRESSES Per DAY */
+/* Visualize Total Accounts ? */
+
+SELECT 
+COUNT(DISTINCT(address)),
+DATE_TRUNC('day', time) AS dt
+FROM ethereum."traces"
+INNER JOIN ethereum."blocks" ON block_hash=hash
+GROUP BY dt
+LIMIT 10
