@@ -32,21 +32,15 @@ GROUP BY 1
 OFFSET 1
 
 
-/* MINERS */
+/* VISUALIZE UNIQUE MINERS Per Day */
 
-/* Total Number of Distinct Miners on Ethereum */
-/* 5398 */
-SELECT COUNT(DISTINCT(miner))
+SELECT
+DATE_TRUNC('day', time) AS dt,
+COUNT(DISTINCT(miner)) AS unique_miner
 FROM ethereum."blocks"
-LIMIT 10
+GROUP BY 1
+OFFSET 1
 
-/* Line or Area chart of Number of Unique Miners PER Day */
-/* Truncate Date Before Group By */
-SELECT COUNT(DISTINCT(miner)) AS num_miner, DATE_TRUNC('day', time) AS dt
-FROM ethereum."blocks"
-WHERE time > now() - interval '10 days'
-GROUP BY dt
-LIMIT 10
 
 /* Line Chart */
 /* Number of Distinct Miners PER DAY since beginnning */
