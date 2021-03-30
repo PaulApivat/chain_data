@@ -11,9 +11,12 @@ The primary purpose of this project is to explore onchain data for various crypt
 We'll start with [Dune Analytics](https://duneanalytics.com/home); a perfect opportunity to deepen SQL skills. We will:
 
 - write explainer for 5 useful dashboards to know
+- [Introductory Ethereum Metrics](https://duneanalytics.com/kroeger0x/ethereum-metrics_1), see Charts from the Ethereum Network ([link](https://etherchain.org/charts)), Network Statistics ([link](https://ethstats.io/))
+
+- [BAT Token](https://duneanalytics.com/queries/27776): Support essay demonstrating BAT as a Web3 browser. Query BAT Token to demonstrate supply & demand
+
 - [DEX metrics](https://duneanalytics.com/hagaetc/dex-metrics)
 - [BTC on Ethereum](https://duneanalytics.com/eliasimos/btc-on-ethereum_1)
-- [Introductory Ethereum Metrics](https://duneanalytics.com/kroeger0x/ethereum-metrics_1), see Charts from the Ethereum Network ([link](https://etherchain.org/charts)), Network Statistics ([link](https://ethstats.io/))
 - [Uniswap Fundamentals](https://duneanalytics.com/carrawu/uniswap-analytics)
 - [Uniswap Governance](https://duneanalytics.com/lsquared/uniswap-governance)
 - [Tornado Cash, Privacy on Ethereum](https://duneanalytics.com/poma/tornado-cash_1)
@@ -74,7 +77,15 @@ Then explore The Graph Documentation:
 - [Dune Snippets](https://github.com/sambacha/dune-snippets)
 - [Dune Discord](https://discord.com/invite/ErrzwBz)
 
+### Blog Post Resources
+
+- [Explore Ethereum Data with SQL queries on Dune Analytics](https://ethereumdev.io/explore-ethereum-data-with-sql-queries-on-dune-analytics/)
+
 ## Documenting Progress
+
+- 3/29: Creating intro to Ethereum dashboard with basic queries: Number of blocks per day, Average difficulty, Unique miners per day, Total Gas usage, Block Gas limit, Unique Addresses (Timed Out)
+- Intro to Ethereum: Next Step: Continue working to create dashboard that matches Etherscan.io
+- 3/30: Create basic BAT Token Daily Value Transfer. Learn anatomy of [querying a specific token](https://ethereumdev.io/explore-ethereum-data-with-sql-queries-on-dune-analytics/)
 
 ## Getting Data
 
