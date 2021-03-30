@@ -80,6 +80,9 @@ Then explore The Graph Documentation:
 ### Blog Post Resources
 
 - [Explore Ethereum Data with SQL queries on Dune Analytics](https://ethereumdev.io/explore-ethereum-data-with-sql-queries-on-dune-analytics/)
+- [Sample query ERC20 transfers](https://duneanalytics.com/queries/1045/source#1760)
+- [Understand the ERC20 token smart contract](https://ethereumdev.io/understand-the-erc20-token-smart-contract/) - to properly query ERC20 tokens
+- [APIs and services every Ethereum developer should know](https://ethereumdev.io/apis-and-services-every-ethereum-developer-should-know/)
 
 ## Documenting Progress
 
