@@ -88,7 +88,7 @@ Then explore The Graph Documentation:
 
 - 3/29: Creating intro to Ethereum dashboard with basic queries: Number of blocks per day, Average difficulty, Unique miners per day, Total Gas usage, Block Gas limit, Unique Addresses (Timed Out)
 - Intro to Ethereum: Next Step: Continue working to create dashboard that matches Etherscan.io
-- 3/30: Create basic BAT Token Daily Value Transfer. Learn anatomy of [querying a specific token](https://ethereumdev.io/explore-ethereum-data-with-sql-queries-on-dune-analytics/)
+- 3/30: Create query for BAT Token Daily Value Transfer & Total Borrows of BAT Token. Learn anatomy of [querying a specific token](https://ethereumdev.io/explore-ethereum-data-with-sql-queries-on-dune-analytics/)
 
 ## Getting Data
 
