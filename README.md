@@ -84,6 +84,8 @@ Then explore The Graph Documentation:
 - [Understand the ERC20 token smart contract](https://ethereumdev.io/understand-the-erc20-token-smart-contract/) - to properly query ERC20 tokens
 - [APIs and services every Ethereum developer should know](https://ethereumdev.io/apis-and-services-every-ethereum-developer-should-know/)
 
+- [A complete guide to creating sub-graphs on The Graph Protocol](https://medium.com/quiknode/an-intro-to-the-graph-indexed-data-for-dapps-4d83011d0d99)
+
 ## Documenting Progress
 
 - 3/29: Creating intro to Ethereum dashboard with basic queries: Number of blocks per day, Average difficulty, Unique miners per day, Total Gas usage, Block Gas limit, Unique Addresses (Timed Out)
