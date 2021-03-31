@@ -37,8 +37,21 @@ WHERE "contract_address" = '\x6c8c6b02e7b2be14d4fa6022dfd6d75921d90e4e'
 
 /* same visual, except GROUP BY dt */
 SELECT 
-SUM("totalBorrows") AS total_borrows, 
+SUM("totalBorrows"/1e18) AS total_borrows, 
 DATE_TRUNC('day', evt_block_time) AS dt
 FROM compound_v2."cErc20_evt_Borrow"
 WHERE "contract_address" = '\x6c8c6b02e7b2be14d4fa6022dfd6d75921d90e4e'
 GROUP BY dt
+
+/* same visual, but for Borrow Amount */
+SELECT 
+SUM("borrowAmount"/1e18) AS borrow_amount, 
+DATE_TRUNC('day', evt_block_time) AS dt
+FROM compound_v2."cErc20_evt_Borrow"
+WHERE "contract_address" = '\x6c8c6b02e7b2be14d4fa6022dfd6d75921d90e4e'
+GROUP BY dt
+
+/* Looking up BAT symbol on erc20."tokens" */
+SELECT * FROM erc20."tokens"
+WHERE contract_address='\x0d8775f648430679a709e98d2b0cb6250d2887ef'
+LIMIT 10
