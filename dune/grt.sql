@@ -34,4 +34,10 @@ FROM erc20."ERC20_evt_Transfer"
 WHERE contract_address='\xc944e90c64b2c07662a292be6244bdf05cda44a7'
 GROUP BY dt
 
-
+/* Unique Senders GRT Token - Time Series */
+SELECT 
+COUNT(DISTINCT("from")) AS unique_senders,
+DATE_TRUNC('day', evt_block_time) AS dt
+FROM erc20."ERC20_evt_Transfer"
+WHERE contract_address='\xc944e90c64b2c07662a292be6244bdf05cda44a7'
+GROUP BY dt
