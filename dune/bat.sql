@@ -55,3 +55,8 @@ GROUP BY dt
 SELECT * FROM erc20."tokens"
 WHERE contract_address='\x0d8775f648430679a709e98d2b0cb6250d2887ef'
 LIMIT 10
+
+SELECT * FROM erc20."tokens"
+WHERE symbol='BAT'
+LIMIT 10
+
