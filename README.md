@@ -76,6 +76,8 @@ Then explore The Graph Documentation:
 
 ## Code, Libraries and Resources Used
 
+- [Etherscan](https://etherscan.io/) to look up Smart Contract addresses
+
 - [Dune Snippets](https://github.com/sambacha/dune-snippets)
 - [Dune Discord](https://discord.com/invite/ErrzwBz)
 
@@ -95,6 +97,13 @@ Then explore The Graph Documentation:
 - 3/30: Create query for BAT Token Daily Value Transfer & Total Borrows of BAT Token. Learn anatomy of [querying a specific token](https://ethereumdev.io/explore-ethereum-data-with-sql-queries-on-dune-analytics/)
 - 3/31 - 1/4: Create query for GRT Token; query specific contract_address or symbol.
 - GRT Token Transfer Amount, Transfer Count, Unique Receivers of GRT Token, Unique Senders of GRT Token, Unique Owners of GRT (Total value head), & Top 100 Owner, Spender; Number of Unique Owner vs Owner (unique owner != owner).
+
+- Absolute Beginner for SQL & Dune Analytic Tips:
+
+1. There are multiple transactions per day, so to visualize a Time Series, it helps to use DATE_TRUNC('day', evt_block_time) AS date
+2. Need to use GROUP BY date (x-axis)
+3. If grouping by date, then the y-axis needs to be aggregated, COUNT or SUM
+4. For ERC-20 Tokens, query
 
 ## Getting Data
 
