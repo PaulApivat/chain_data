@@ -14,6 +14,7 @@ We'll start with [Dune Analytics](https://duneanalytics.com/home); a perfect opp
 - [Introductory Ethereum Metrics](https://duneanalytics.com/kroeger0x/ethereum-metrics_1), see Charts from the Ethereum Network ([link](https://etherchain.org/charts)), Network Statistics ([link](https://ethstats.io/))
 
 - [BAT Token](https://duneanalytics.com/queries/27776): Support essay demonstrating BAT as a Web3 browser. Query BAT Token to demonstrate supply & demand
+- GRT Token
 
 - [DEX metrics](https://duneanalytics.com/hagaetc/dex-metrics)
 - [BTC on Ethereum](https://duneanalytics.com/eliasimos/btc-on-ethereum_1)
@@ -66,6 +67,7 @@ Then explore The Graph Documentation:
 
 ### Beyond
 
+- [BitQuery](https://bitquery.io/), competitor of The Graph, also uses GraphQL APIs
 - Etherscan
 - CoinMetrics [Community Network Data](https://coinmetrics.io/community-network-data/)
 - GlassNode [Metric](https://glassnode.com/metrics#tier-1) & [Glassnode Academy](https://academy.glassnode.com/indicators/coin-issuance/puell-multiple)
@@ -91,6 +93,8 @@ Then explore The Graph Documentation:
 - 3/29: Creating intro to Ethereum dashboard with basic queries: Number of blocks per day, Average difficulty, Unique miners per day, Total Gas usage, Block Gas limit, Unique Addresses (Timed Out)
 - Intro to Ethereum: Next Step: Continue working to create dashboard that matches Etherscan.io
 - 3/30: Create query for BAT Token Daily Value Transfer & Total Borrows of BAT Token. Learn anatomy of [querying a specific token](https://ethereumdev.io/explore-ethereum-data-with-sql-queries-on-dune-analytics/)
+- 3/31 - 1/4: Create query for GRT Token; query specific contract_address or symbol.
+- GRT Token Transfer Amount, Transfer Count, Unique Receivers of GRT Token, Unique Senders of GRT Token, Unique Owners of GRT (Total value head), & Top 100 Owner, Spender; Number of Unique Owner vs Owner (unique owner != owner).
 
 ## Getting Data
 
