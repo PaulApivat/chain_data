@@ -82,6 +82,17 @@ GROUP BY spender
 ORDER BY sum_value DESC
 LIMIT 100
 
+/* Top 100 Token Holders(?) of GRT Token */
+SELECT 
+"to" AS holder,
+SUM("value"/10^18) AS sum_value
+FROM erc20."ERC20_evt_Transfer"
+WHERE contract_address='\xc944e90c64b2c07662a292be6244bdf05cda44a7'
+GROUP BY holder
+ORDER BY sum_value DESC
+LIMIT 100
+
+
 /* If unsure DISTINCT(owner) makes a different do a comparison count */
 /* Makes a huge difference */
 
