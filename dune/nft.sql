@@ -19,7 +19,9 @@ AND EXTRACT (year from evt_block_time) >= 2018
 GROUP BY month_created
 LIMIT 50
 
-/* ADD Super Rare v1 + v2 */
+/* ADD Super Rare v1 + v2 Apr 2018 - Mar 2021 */
+/* 5415 total NFTs minted */
+
 SELECT 
     SUM(artist_addr) AS total_artists, 
     month_created
@@ -47,15 +49,9 @@ FROM
     AND EXTRACT (year from evt_block_time) >= 2018
     GROUP BY month_created
 
-)A
+)A /* alias */
 GROUP BY month_created
 ORDER BY month_created DESC
-
-
-
-
-
-
 
 
 
@@ -80,7 +76,49 @@ AND EXTRACT (year from evt_block_time) >= 2018
 GROUP BY month_created
 LIMIT 50
 
-/* Known Origin: NFT Artist Onboarding by Month */ 
+/* ADD Async Art v1 + v2 */
+/* 366 NFTs minted */
+
+SELECT 
+    SUM(artist_addr) AS total_artists,
+    month_created
+FROM
+(    
+-------------------------AsyncArt v1 ------------------------
+    SELECT 
+        COUNT(DISTINCT("to")) AS artist_addr,
+        DATE_TRUNC('month', evt_block_time) AS month_created
+    FROM async."AsyncArtwork_evt_Transfer"
+    WHERE "from" = '\x0000000000000000000000000000000000000000'
+    AND EXTRACT (year from evt_block_time) >= 2018
+    GROUP BY month_created
+
+
+    UNION ALL
+    
+-------------------------AsyncArt v2 ------------------------
+
+    SELECT 
+        COUNT(DISTINCT("to")) AS artist_addr,
+        DATE_TRUNC('month', evt_block_time) AS month_created
+    FROM async_art_v2."AsyncArtwork_v2_evt_Transfer" 
+    WHERE "from" = '\x0000000000000000000000000000000000000000'
+    AND EXTRACT (year from evt_block_time) >= 2018
+    GROUP BY month_created
+
+)A /* alias */
+GROUP BY month_created
+ORDER BY month_created DESC
+
+
+
+
+
+
+
+/* Known Origin: NFTs per month */ 
+/* 978 NFTs minted to date */
+
 SELECT 
    COUNT(DISTINCT("_creator")) AS artist_addr,
    DATE_TRUNC('month', evt_block_time) AS month_created
@@ -89,7 +127,9 @@ WHERE EXTRACT (year from evt_block_time) >= 2018
 GROUP BY month_created
 LIMIT 50
 
-/* Rarible v1: NFT Artist Onboarding by Month */ 
+/* Rarible: NFTs minted per month */ 
+/* 37169 NFTs minted to date */
+
 SELECT 
    COUNT(DISTINCT("_to")) AS artist_addr,
    DATE_TRUNC('month', evt_block_time) AS month_created
@@ -98,3 +138,13 @@ WHERE "_from" = '\x0000000000000000000000000000000000000000'
 AND EXTRACT (year from evt_block_time) >= 2018
 GROUP BY month_created
 LIMIT 50
+
+/* Sum total NFTs minted */
+SELECT 
+   COUNT(DISTINCT("_to")) AS artist_addr
+   /*DATE_TRUNC('month', evt_block_time) AS month_created*/
+FROM rarible_v1."RaribleToken_v1_evt_TransferSingle" 
+WHERE "_from" = '\x0000000000000000000000000000000000000000'
+AND EXTRACT (year from evt_block_time) >= 2018
+/*GROUP BY month_created
+LIMIT 50*/
