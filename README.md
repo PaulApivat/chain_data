@@ -104,8 +104,9 @@ Then explore The Graph Documentation:
 - 4/4: Comb through [DEX Metrics dashboard](https://duneanalytics.com/hagaetc/dex-metrics) in Dune Analytics, write explainer on SQL queries.
 - 4/8: Idea: Link Ethereum Intro on Dune to Block Explorer article on ethereum.org
 - Explore [Open Sea Dashboard](https://duneanalytics.com/queries/3469/6913), break out the components to understand Open Sea smart contract
+- distinguish OpenSea address vs OpenSea Wallet, OpenSea: Registry, OpenSea: ENS Resolver [link](https://etherscan.io/accounts/label/opensea)
 - wyvern protocol: atomicMatch & OrdersMatched
--
+- Dune Query: addrs, 2 wyvern tables, token, erc20.tokens, prices.usd (_note_: no duplicate strings, make querying part of fast data display and reproducible).
 
 - Absolute Beginner for SQL & Dune Analytic Tips:
 
