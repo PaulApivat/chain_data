@@ -12,9 +12,13 @@ We'll start with [Dune Analytics](https://duneanalytics.com/home); a perfect opp
 
 - write explainer for 5 useful dashboards to know
 - [Introductory Ethereum Metrics](https://duneanalytics.com/kroeger0x/ethereum-metrics_1), see Charts from the Ethereum Network ([link](https://etherchain.org/charts)), Network Statistics ([link](https://ethstats.io/))
+- **Sync intro ethereum metrics on Dune w/ Ethereum.org Block Explorer content**
+- **_Goal: Make Tutorial for Querying Ethereum with Dune Analytics on Ethereum.org_**
 
 - [BAT Token](https://duneanalytics.com/queries/27776): Support essay demonstrating BAT as a Web3 browser. Query BAT Token to demonstrate supply & demand
 - GRT Token
+
+- [Open Sea](https://etherscan.io/accounts/label/opensea)
 
 - [DEX metrics](https://duneanalytics.com/hagaetc/dex-metrics)
 - [BTC on Ethereum](https://duneanalytics.com/eliasimos/btc-on-ethereum_1)
@@ -98,6 +102,10 @@ Then explore The Graph Documentation:
 - 3/31 - 1/4: Create query for GRT Token; query specific contract_address or symbol.
 - GRT Token Transfer Amount, Transfer Count, Unique Receivers of GRT Token, Unique Senders of GRT Token, Unique Owners of GRT (Total value head), & Top 100 Owner, Spender; Number of Unique Owner vs Owner (unique owner != owner).
 - 4/4: Comb through [DEX Metrics dashboard](https://duneanalytics.com/hagaetc/dex-metrics) in Dune Analytics, write explainer on SQL queries.
+- 4/8: Idea: Link Ethereum Intro on Dune to Block Explorer article on ethereum.org
+- Explore [Open Sea Dashboard](https://duneanalytics.com/queries/3469/6913), break out the components to understand Open Sea smart contract
+- wyvern protocol: atomicMatch & OrdersMatched
+-
 
 - Absolute Beginner for SQL & Dune Analytic Tips:
 
@@ -105,6 +113,7 @@ Then explore The Graph Documentation:
 2. Need to use GROUP BY date (x-axis)
 3. If grouping by date, then the y-axis needs to be aggregated, COUNT or SUM
 4. For ERC-20 Tokens, query [etherscan.io](https://etherscan.io/) to reconcile contract addresses
+5. Joining two tables via UNION ALL and INNER JOIN
 
 ## Getting Data
 
