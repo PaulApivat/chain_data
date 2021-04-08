@@ -43,16 +43,23 @@ _Note_: Also join discord for these projects.
 
 ### Phase 1 Outcomes
 
+0. The Rise of Blockchain Querying (Trend Analysis)
+
 1. A SQL primer to explore Ethereum on Dune Analytics. [Tool]
-2. Top 10 Projects in DeFi, by the numbers in both SQL and GraphQL. Build a [Dashboard]
+   1a. Match Intro Ethereum (Dune) w/ Ethereum Block Explorer [ethereum.org](https://ethereum.org/en/developers/docs/data-and-analytics/block-explorers/)
+
+2. Top 10 Projects in DeFi, by the numbers in both SQL. Build a [Dashboard]
    2a. See if possible to do a [rabbithole quest](https://rabbithole.gg/quests) on any coins.
+
 3. Top 10 Metrics investors use to evaluate DeFi projects [Metrics] [Queries]
-4. Join community
+4. Join Dune Discord
 5. Reflections on phase 1 (falling down the rabbit hole yet?)
 
 ### Phase 2 The Graph Protocol
 
 Start with the Graph Explorer:
+
+Start with [this article on Ethereum.org](https://ethereum.org/en/developers/tutorials/the-graph-fixing-web3-data-querying/)
 
 Then explore The Graph Documentation:
 
@@ -102,14 +109,17 @@ Then explore The Graph Documentation:
 - 3/30: Create query for BAT Token Daily Value Transfer & Total Borrows of BAT Token. Learn anatomy of [querying a specific token](https://ethereumdev.io/explore-ethereum-data-with-sql-queries-on-dune-analytics/)
 - 3/31 - 1/4: Create query for GRT Token; query specific contract_address or symbol.
 - GRT Token Transfer Amount, Transfer Count, Unique Receivers of GRT Token, Unique Senders of GRT Token, Unique Owners of GRT (Total value head), & Top 100 Owner, Spender; Number of Unique Owner vs Owner (unique owner != owner).
+
 - 4/4: Comb through [DEX Metrics dashboard](https://duneanalytics.com/hagaetc/dex-metrics) in Dune Analytics, write explainer on SQL queries.
 - 4/8: Idea: Link Ethereum Intro on Dune to Block Explorer article on ethereum.org
 - Explore [Open Sea Dashboard](https://duneanalytics.com/queries/3469/6913), break out the components to understand Open Sea smart contract
 - distinguish OpenSea address vs OpenSea Wallet, OpenSea: Registry, OpenSea: ENS Resolver [link](https://etherscan.io/accounts/label/opensea)
 - wyvern protocol: atomicMatch & OrdersMatched
-- Dune Query: addrs, 2 wyvern tables, token, erc20.tokens, prices.usd (_note_: no duplicate strings, make querying part of fast data display and reproducible).
+- **Dune Queries for Open Sea**: addrs, 2 wyvern tables, token, erc20.tokens, prices.usd (_note_: no duplicate strings, make querying part of fast data display and reproducible).
 
-- Absolute Beginner for SQL & Dune Analytic Tips:
+- 4/9: **Rise of Blockchain Querying Trend Analysis**
+
+## Absolute Beginner for SQL & Dune Analytic Tips:
 
 1. There are multiple transactions per day, so to visualize a Time Series, it helps to use DATE_TRUNC('day', evt_block_time) AS date
 2. Need to use GROUP BY date (x-axis)
