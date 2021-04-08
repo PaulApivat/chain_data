@@ -16,7 +16,8 @@ We'll start with [Dune Analytics](https://duneanalytics.com/home); a perfect opp
 - **_Goal: Make Tutorial for Querying Ethereum with Dune Analytics on Ethereum.org_**
 
 - [BAT Token](https://duneanalytics.com/queries/27776): Support essay demonstrating BAT as a Web3 browser. Query BAT Token to demonstrate supply & demand
-- GRT Token
+
+- [GRT Token](https://ethereum.org/en/developers/tutorials/the-graph-fixing-web3-data-querying): Exploring GRT Token supply/demand. The Graph Protocol appears to be the preferred data query solution for Ethereum.
 
 - [Open Sea](https://etherscan.io/accounts/label/opensea)
 
