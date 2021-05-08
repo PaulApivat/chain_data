@@ -78,7 +78,23 @@ SELECT
     token_a_amount_raw,
     usd_amount,
     token_a_address,
+    token_b_address,
     project,
     version
 FROM dex."trades"
 WHERE token_b_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198' 
+
+/* Reversal: BANK token is token_a, 'other' tokens are token_b */
+SELECT
+token_b_symbol,
+token_b_amount,
+trader_b,
+token_b_amount_raw,
+usd_amount,
+token_b_address,
+token_a_address,
+project,
+version
+FROM dex."trades"
+WHERE token_a_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198' 
+
