@@ -183,7 +183,7 @@ FROM temp_table2
 GROUP by 2
 ORDER by token_traded_against DESC
 
-/* Number of Unique Addresses trading BANK */
+/* Number of Unique Addresses trading BANK (by Trading Pair) */
 SELECT
     DATE_TRUNC('day', block_time) AS dt,
     CONCAT(token_a_symbol, token_b_symbol),
@@ -195,3 +195,20 @@ WHERE token_a_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198' OR token_b_
 GROUP BY 1, 2, 4, 5
 ORDER BY dt DESC
 
+/* Total Number of Unique Addresses that traded BANK */
+/* 967 as of May 8th */
+WITH temp_table AS (
+SELECT
+    DATE_TRUNC('day', block_time) AS dt,
+    CONCAT(token_a_symbol, token_b_symbol),
+    COUNT(DISTINCT(trader_a)) AS unique_addresses,
+    project,
+    version
+FROM dex."trades"
+WHERE token_a_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198' OR token_b_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198'
+GROUP BY 1, 2, 4, 5
+ORDER BY dt DESC
+)
+SELECT
+    SUM(unique_addresses) AS total_unique_addresses
+FROM temp_table
