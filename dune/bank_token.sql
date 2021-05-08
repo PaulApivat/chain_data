@@ -98,3 +98,27 @@ version
 FROM dex."trades"
 WHERE token_a_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198' 
 
+/* Tokens traded against BANK token across DEXes */
+/* My version */
+WITH temp_table AS (
+    SELECT
+        block_time,
+        token_a_symbol,
+        token_b_symbol,
+        token_a_amount,
+        token_b_amount,
+        usd_amount,
+        token_b_address,
+        token_a_address,
+        project,
+        version
+    FROM dex."trades"
+WHERE token_a_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198' OR token_b_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198'
+) 
+SELECT
+    DATE_TRUNC('day', block_time) as dt,
+    CASE WHEN token_a_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198' THEN token_b_symbol ELSE token_a_symbol END AS token_traded_against,
+    SUM(usd_amount) AS sum_usd
+FROM temp_table
+GROUP BY 1,2
+ORDER BY dt DESC
