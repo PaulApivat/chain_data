@@ -212,3 +212,54 @@ ORDER BY dt DESC
 SELECT
     SUM(unique_addresses) AS total_unique_addresses
 FROM temp_table
+
+
+/* Top 20 $BANK Holders */
+/* Try changing to 2500 */
+WITH transfers AS (
+    SELECT
+    evt_tx_hash AS tx_hash,
+    tr."from" AS address,
+    -tr.value AS amount
+     FROM erc20."ERC20_evt_Transfer" AS tr
+     WHERE contract_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198'
+UNION ALL
+    SELECT
+    evt_tx_hash AS tx_hash,
+    tr."to" AS address,
+    tr.value AS amount
+     FROM erc20."ERC20_evt_Transfer" AS tr 
+     WHERE contract_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198'
+),
+balances AS (
+    SELECT address, sum(amount/1e18) AS balance
+    FROM transfers
+    WHERE address <> '\x0000000000000000000000000000000000000000'
+    GROUP BY 1
+    ORDER BY 2 desc
+),
+balances_top20 AS (
+    SELECT address, balance
+    FROM balances
+    LIMIT 20
+),
+counts AS (
+    SELECT count(address) AS holders, sum(balance) AS holdings FROM balances
+),
+balances_others AS (
+    SELECT address, balance 
+    FROM balances 
+    WHERE address NOT IN (SELECT address FROM balances_top20)
+),
+counts_others AS (
+    SELECT count(address) AS holders, sum(balance) AS holdings FROM balances_others
+),
+balances_top21 AS (
+    SELECT CONCAT('0x', SUBSTRING(CAST(address AS varchar), 3, 40)) AS address, balance
+    FROM balances_top20
+UNION ALL
+    SELECT 'Others' AS address, holdings AS balance
+    FROM counts_others
+)
+SELECT *
+FROM balances_top21
