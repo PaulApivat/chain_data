@@ -64,3 +64,42 @@ SELECT
 FROM temp_table2
 WHERE balance > 0
 
+/* Also */
+/* WHERE balance > 34999 */
+/* WHERE balance > 149999 */
+
+/* Uniswap BANK/ETH LP Token Holders */
+/* 21 current holders */
+WITH temp_table AS (
+SELECT 
+    evt_block_time,
+    tr."from" AS address,
+    -tr.value AS amount,
+    contract_address
+FROM erc20."ERC20_evt_Transfer" tr
+WHERE contract_address = '\x59c1349bc6f28a427e78ddb6130ec669c2f39b48'
+
+UNION ALL
+
+SELECT
+    evt_block_time,
+    tr."to" AS address,
+    tr.value AS amount,
+    contract_address
+FROM erc20."ERC20_evt_Transfer" tr
+WHERE contract_address = '\x59c1349bc6f28a427e78ddb6130ec669c2f39b48'
+), temp_table2 AS (
+SELECT
+    address,
+    SUM(amount/10^18) AS balance
+FROM temp_table tr
+LEFT JOIN erc20.tokens tok ON tr.contract_address = tok.contract_address
+GROUP BY 1
+ORDER BY 2 DESC
+)
+SELECT
+    address,
+    balance,
+    (balance / 3491) * 100 AS percentage
+FROM temp_table2
+WHERE balance > 0
