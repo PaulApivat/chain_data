@@ -263,3 +263,29 @@ UNION ALL
 )
 SELECT *
 FROM balances_top21
+
+
+/* Addresses with Highest Trading Volume */
+WITH temp_table AS (
+SELECT
+    DATE_TRUNC('day', block_time) AS dt,
+    CONCAT(token_a_symbol, token_b_symbol) AS token,
+    trader_a,
+    trader_b,
+    SUM(usd_amount) AS sum_usd,
+    project,
+    version
+FROM dex."trades"
+WHERE token_a_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198' 
+OR token_b_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198'
+AND usd_amount > 0
+GROUP BY dt, token, trader_a, trader_b, project, version
+ORDER BY sum_usd DESC
+)
+SELECT
+    trader_a,
+    SUM(sum_usd) AS total_volume
+FROM temp_table
+WHERE sum_usd > 0
+GROUP BY trader_a
+ORDER BY total_volume DESC
