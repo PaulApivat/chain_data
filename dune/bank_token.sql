@@ -289,3 +289,32 @@ FROM temp_table
 WHERE sum_usd > 0
 GROUP BY trader_a
 ORDER BY total_volume DESC
+
+/* Total Trading Volume with $BANK {version 2, see version 1 above} */
+WITH temp_table AS (
+SELECT
+    DATE_TRUNC('day', block_time) AS dt,
+    CONCAT(token_a_symbol, token_b_symbol) AS token,
+    trader_a,
+    trader_b,
+    SUM(usd_amount) AS sum_usd,
+    project,
+    version
+FROM dex."trades"
+WHERE token_a_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198' 
+OR token_b_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198'
+AND usd_amount > 0
+GROUP BY dt, token, trader_a, trader_b, project, version
+ORDER BY sum_usd DESC
+), temp_table2 AS (
+SELECT
+    trader_a,
+    SUM(sum_usd) AS total_volume
+FROM temp_table
+WHERE sum_usd > 0
+GROUP BY trader_a
+ORDER BY total_volume DESC
+)
+SELECT
+    SUM(total_volume) AS usd_trade_vol
+FROM temp_table2
