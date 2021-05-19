@@ -169,14 +169,15 @@ GROUP BY 1
 ORDER BY 2 DESC
 )
 SELECT
-    COUNT(CASE WHEN balance >= 100000001 THEN 1 END) AS hundred_millions,
-    COUNT(CASE WHEN balance >= 1000001 AND balance < 100000000 THEN 1 END) AS millions,
-    COUNT(CASE WHEN balance >= 500001 AND balance < 1000000 THEN 1 END) AS five_hundrend_k,
-    COUNT(CASE WHEN balance >= 150001 AND balance < 500000 THEN 1 END) AS one_fifty_k,
-    COUNT(CASE WHEN balance >= 35001 AND balance < 150000 THEN 1 END) AS thirty_five_k,
-    COUNT(CASE WHEN balance < 35000 THEN 1 END) AS less_thirty_five_k
+    COUNT(CASE WHEN balance >= 100000000 THEN 1 END) AS hundred_millions,
+    COUNT(CASE WHEN balance >= 1000000 AND balance < 100000000 THEN 1 END) AS millions,
+    COUNT(CASE WHEN balance >= 500000 AND balance < 1000000 THEN 1 END) AS five_hundrend_k,
+    COUNT(CASE WHEN balance >= 150000 AND balance < 500000 THEN 1 END) AS one_fifty_k,
+    COUNT(CASE WHEN balance >= 35000 AND balance < 150000 THEN 1 END) AS thirty_five_k,
+    COUNT(CASE WHEN balance >= 10000 AND balance < 35000 THEN 1 END) AS ten_k,
+    COUNT(CASE WHEN balance >= 1 AND balance < 10000 THEN 1 END) AS less_ten_k
 FROM temp_table2
-WHERE balance > 0
+WHERE balance >= 1
 
 
 /* CUMMULATIVE SUM of BANK Holders */
@@ -267,4 +268,4 @@ SELECT
     balance,
     percentage
 FROM temp_table3
-WHERE balance > 1
+WHERE balance >= 1
