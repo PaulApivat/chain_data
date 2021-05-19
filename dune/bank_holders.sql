@@ -177,3 +177,94 @@ SELECT
     COUNT(CASE WHEN balance < 35000 THEN 1 END) AS less_thirty_five_k
 FROM temp_table2
 WHERE balance > 0
+
+
+/* CUMMULATIVE SUM of BANK Holders */
+/* Does not quite provide historical snapshots */
+WITH temp_table AS (
+SELECT 
+    evt_block_time,
+    tr."from" AS address,
+    -tr.value AS amount,
+    contract_address
+FROM erc20."ERC20_evt_Transfer" tr
+WHERE contract_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198'
+
+UNION ALL
+
+SELECT
+    evt_block_time,
+    tr."to" AS address,
+    tr.value AS amount,
+    contract_address
+FROM erc20."ERC20_evt_Transfer" tr
+WHERE contract_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198'
+), temp_table2 AS (
+SELECT
+    evt_block_time,
+    address,
+    SUM(amount/10^18) AS balance
+FROM temp_table tr
+LEFT JOIN erc20.tokens tok ON tr.contract_address = tok.contract_address
+GROUP BY 1, 2
+ORDER BY 3 DESC
+), temp_table3 AS (
+SELECT
+    DATE_TRUNC('day', evt_block_time) AS dt,
+    COUNT(address) AS num_bank_holders
+FROM temp_table2
+WHERE balance > 0
+GROUP BY dt
+ORDER BY dt DESC
+)
+SELECT
+    dt,
+    num_bank_holders,
+    SUM(num_bank_holders) OVER (ORDER BY dt)
+FROM temp_table3
+ORDER BY dt DESC
+
+/* Holders with more than ONE $BANK */
+/* More reflective when adding categories of BANK holders together */
+/* meaningful difference between > 0 & > 1 $BANK */
+
+WITH temp_table AS (
+SELECT 
+    evt_block_time,
+    tr."from" AS address,
+    -tr.value AS amount,
+    contract_address
+FROM erc20."ERC20_evt_Transfer" tr
+WHERE contract_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198'
+
+UNION ALL
+
+SELECT
+    evt_block_time,
+    tr."to" AS address,
+    tr.value AS amount,
+    contract_address
+FROM erc20."ERC20_evt_Transfer" tr
+WHERE contract_address = '\x2d94aa3e47d9d5024503ca8491fce9a2fb4da198'
+), temp_table2 AS (
+SELECT
+    address,
+    SUM(amount/10^18) AS balance
+FROM temp_table tr
+LEFT JOIN erc20.tokens tok ON tr.contract_address = tok.contract_address
+GROUP BY 1
+ORDER BY 2 DESC
+), temp_table3 AS (
+SELECT
+    address,
+    balance,
+    (balance / 1000000000) * 100 AS percentage
+FROM temp_table2
+WHERE balance > 0
+) 
+SELECT
+    address,
+    balance,
+    percentage
+FROM temp_table3
+WHERE balance > 1
