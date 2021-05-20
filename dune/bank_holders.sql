@@ -271,8 +271,8 @@ FROM temp_table3
 WHERE balance >= 1
 
 /* Bank Holder Categories */
-/* Trying to Pivot Longer */
-/* But need to insert another column */
+/* Successful Pivot Longer */
+/* Successful insert Name column */
 
 WITH temp_table AS (
 SELECT 
@@ -311,18 +311,28 @@ SELECT
     COUNT(CASE WHEN balance >= 1 AND balance < 10000 THEN 1 END) AS less_ten_k
 FROM temp_table2
 WHERE balance >= 1
+), CTE AS (
+SELECT '100M+' AS Name, hundred_millions AS Value
+FROM temp_table3
+UNION ALL
+SELECT '1M+' AS Name, millions AS Value
+FROM temp_table3
+UNION ALL
+SELECT '500K - 1M' AS Name, five_hundred_k AS Value
+FROM temp_table3
+UNION ALL
+SELECT '150K - 500K' AS Name, one_fifty_k AS Value
+FROM temp_table3
+UNION ALL
+SELECT '35K - 150K' AS Name, thirty_five_k AS Value
+FROM temp_table3
+UNION ALL
+SELECT '10K - 35K' AS Name, ten_k AS Value
+FROM temp_table3
+UNION ALL
+SELECT '< 10K' AS Name, less_ten_k AS Value
+FROM temp_table3
 )
-SELECT hundred_millions FROM temp_table3
-UNION ALL
-SELECT millions FROM temp_table3
-UNION ALL
-SELECT five_hundred_k FROM temp_table3
-UNION ALL
-SELECT one_fifty_k FROM temp_table3
-UNION ALL
-SELECT thirty_five_k FROM temp_table3
-UNION ALL
-SELECT ten_k FROM temp_table3
-UNION ALL
-SELECT less_ten_k FROM temp_table3
+SELECT Name, Value
+FROM CTE
 
